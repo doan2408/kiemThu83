@@ -61,6 +61,15 @@ class NhanVienServiceTest {
     }
 
     @Test
+    void updateTrongLuong() {
+        Exception exception = assertThrows(IllegalArgumentException.class, ()-> {
+            NhanVien nvMuonUpdate = new NhanVien("nv001","duc",21,null,5,"ptpm");
+            nhanVienService.update(nvMuonUpdate);
+        });
+        assertEquals("luong khong duoc de trong", exception.getMessage());
+    }
+
+    @Test
     void updateTrongPhongBan() {
         Exception exception = assertThrows(IllegalArgumentException.class, ()-> {
             NhanVien nvMuonUpdate = new NhanVien("nv001","duc",21,20f,5,"");
